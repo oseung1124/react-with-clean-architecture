@@ -2,9 +2,10 @@ import BoardRepositoryImpl from 'adapter/src/repositories/Board';
 import SessionRepositoryImpl from 'adapter/src/repositories/Session';
 import { IInfrastructures } from './infrastructures';
 import { BoardRepository } from 'packages/data/repositories/Board';
+import { SessionRepository } from 'packages/data/repositories/Session';
 
 export interface IRepositories {
-	session: SessionRepositoryImpl;
+	session: SessionRepository;
 	board: BoardRepository;
 }
 
