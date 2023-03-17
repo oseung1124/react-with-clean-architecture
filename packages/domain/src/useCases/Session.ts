@@ -1,8 +1,8 @@
-import { ISessionRepository } from './repository-interfaces/iSession';
 import { IUserDTO } from '../dto/UserDTO';
+import { SessionRepository } from '../../../data/repositories/Session';
 
 class SessionUseCase {
-	constructor(private readonly sessionRepo: ISessionRepository) {}
+	constructor(private readonly sessionRepo: SessionRepository) {}
 
 	async login(userDTO: IUserDTO): Promise<string> {
 		const token = await this.sessionRepo.login(userDTO);

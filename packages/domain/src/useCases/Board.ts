@@ -1,11 +1,11 @@
 import Board, { IBoardEntity } from '../aggregates/Board';
 import Comment from '../entities/Comment';
-import { ABoardRepository } from './repository-interfaces/iBoard';
+import { BoardRepository } from '../../../data/repositories/Board';
 import { IBoardDTO } from '../dto/BoardDTO';
 import { ICommentDTO } from '../dto/CommentDTO';
 
 class BoardUseCase {
-	constructor(private readonly boardRepo: ABoardRepository) {}
+	constructor(private readonly boardRepo: BoardRepository) {}
 
 	async getBoards(): Promise<Array<IBoardEntity>> {
 		const boarDTOList = await this.boardRepo.getBoards();

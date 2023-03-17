@@ -1,8 +1,9 @@
 import BoardDTO, { IBoardDTO, IBoardParams } from '../../../domain/src/dto/BoardDTO';
 import CommentDTO, { ICommentDTO, ICommentParams } from '../../../domain/src/dto/CommentDTO';
 import { IHttp } from '../infrastructures/Http';
+import { BoardRepository } from 'packages/data/repositories/Board';
 
-class BoardRepository {
+class BoardRepositoryImpl implements BoardRepository {
 	constructor(private readonly baseURL: string, readonly http: IHttp) {}
 
 	async getBoards(): Promise<Array<IBoardDTO>> {
@@ -42,4 +43,4 @@ class BoardRepository {
 	}
 }
 
-export default BoardRepository;
+export default BoardRepositoryImpl;

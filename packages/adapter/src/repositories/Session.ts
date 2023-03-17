@@ -1,8 +1,9 @@
 import { IHttp } from '../infrastructures/Http';
 import { IStorage } from '../infrastructures/Storage';
 import { IUserDTO } from 'domain/src/dto/UserDTO';
+import { SessionRepository } from 'packages/data/repositories/Session';
 
-class SessionRepository {
+class SessionRepositoryImpl implements SessionRepository {
 	constructor(private readonly baseURL: string, private readonly http: IHttp, private readonly storage: IStorage) {}
 
 	async login(userDTO: IUserDTO): Promise<string> {
@@ -34,4 +35,4 @@ class SessionRepository {
 	}
 }
 
-export default SessionRepository;
+export default SessionRepositoryImpl;

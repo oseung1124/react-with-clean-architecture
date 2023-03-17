@@ -14,7 +14,12 @@ module.exports = {
 		sourceType: 'module',
 	},
 	plugins: ['react', '@typescript-eslint'],
-	rules: {},
+	rules: {
+		'react/react-in-jsx-scope': 'off',
+		'@typescript-eslint/no-var-requires': 'off',
+		// 추후 해제 필요
+		'@typescript-eslint/no-explicit-any': 'off',
+	},
 	settings: {
 		react: {
 			version: 'detect',
