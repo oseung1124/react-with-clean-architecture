@@ -1,54 +1,53 @@
 export interface ICommentEntity {
-  id: number
-  boardId: number
-  author: string
-  content: string
-  createAt: Date
+	id: number;
+	boardId: number;
+	author: string;
+	content: string;
+	createAt: Date;
 }
 
 export interface ICommentData {
-  id: number
-  boardId: number
-  author: string
-  content: string
-  createAt: Date
+	id: number;
+	boardId: number;
+	author: string;
+	content: string;
+	createAt: Date;
 }
 
-class Comment implements ICommentEntity { 
+class Comment implements ICommentEntity {
+	private readonly _id: number;
+	private readonly _boardId: number;
+	private readonly _author: string;
+	private readonly _content: string;
+	private readonly _createdAt: Date;
 
-  private readonly _id: number
-  private readonly _boardId: number
-  private readonly _author: string
-  private readonly _content: string
-  private readonly _createdAt: Date
+	constructor(params: ICommentData) {
+		this._id = params.id;
+		this._boardId = params.boardId;
+		this._author = params.author;
+		this._content = params.content;
+		this._createdAt = params.createAt;
+	}
 
-  constructor(params: ICommentData) {
-    this._id = params.id
-    this._boardId = params.boardId
-    this._author = params.author
-    this._content = params.content
-    this._createdAt = params.createAt
-  }
+	get id() {
+		return this._id;
+	}
 
-  get id() {
-    return this._id
-  }
+	get boardId() {
+		return this._boardId;
+	}
 
-  get boardId() {
-    return this._boardId
-  }
+	get author() {
+		return this._author;
+	}
 
-  get author() {
-    return this._author
-  }
+	get content() {
+		return this._content;
+	}
 
-  get content() {
-    return this._content
-  }
-
-  get createAt() {
-    return this._createdAt
-  }
+	get createAt() {
+		return this._createdAt;
+	}
 }
 
-export default Comment
+export default Comment;

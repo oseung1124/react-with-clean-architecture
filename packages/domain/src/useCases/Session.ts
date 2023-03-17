@@ -1,30 +1,26 @@
-import { ISessionRepository } from './repository-interfaces/iSession'
-import { IUserDTO } from '../dto/UserDTO'
+import { ISessionRepository } from './repository-interfaces/iSession';
+import { IUserDTO } from '../dto/UserDTO';
 
 class SessionUseCase {
+	constructor(private readonly sessionRepo: ISessionRepository) {}
 
-  constructor(
-    private readonly sessionRepo: ISessionRepository
-  ) {}
+	async login(userDTO: IUserDTO): Promise<string> {
+		const token = await this.sessionRepo.login(userDTO);
+		this.setToken(token);
+		return token;
+	}
 
-  async login(userDTO: IUserDTO): Promise<string> {
-    const token = await this.sessionRepo.login(userDTO)
-    this.setToken(token)
-    return token
-  }
+	getToken(): Promise<string> {
+		return this.sessionRepo.getToken();
+	}
 
-  getToken(): Promise<string> {
-    return this.sessionRepo.getToken()
-  }
+	setToken(token: string): void {
+		this.sessionRepo.setToken(token);
+	}
 
-  setToken(token: string): void {
-    this.sessionRepo.setToken(token)
-  }
-
-  removeToken(): void {
-    this.sessionRepo.removeToken()
-  }
-
+	removeToken(): void {
+		this.sessionRepo.removeToken();
+	}
 }
 
-export default SessionUseCase
+export default SessionUseCase;
